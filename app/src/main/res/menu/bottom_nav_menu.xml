@@ -6,16 +6,17 @@
         android:title="@string/home">
     </item>
 
-    <item
-        android:id="@+id/navigation_collection"
-        android:icon="@drawable/collection"
-        android:title="@string/collection">
-    </item>
 
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/search"
         android:title="@string/search"
         >
+    </item>
+
+    <item
+        android:id="@+id/navigation_collection"
+        android:icon="@drawable/collection"
+        android:title="@string/collection">
     </item>
 </menu>
