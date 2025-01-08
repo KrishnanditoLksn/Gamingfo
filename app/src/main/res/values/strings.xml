@@ -3,4 +3,6 @@
     <string name="home">Home</string>
     <string name="collection">Collection</string>
     <string name="search">Search</string>
+    <string name="games_for_you">Games For you</string>
+    <string name="all_publishers">All Publishers</string>
 </resources>
