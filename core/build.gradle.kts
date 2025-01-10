@@ -1,24 +1,17 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
-    namespace = "app.ditsdev.gamingfo"
-    compileSdk = 35
+    namespace = "app.ditsdev.core"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "app.ditsdev.gamingfo"
         minSdk = 28
-        //noinspection OldTargetApi
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String","BASE_URL" , "${project.findProperty("BASE_URL")}")
-        buildConfigField("String","API_KEY","${project.findProperty("API_KEY")}")
 
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -45,5 +38,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.appcompat)
+    api(libs.material)
+    api(libs.androidx.navigation.fragment.ktx)
+    api(libs.androidx.navigation.ui.ktx)
+    api(libs.androidx.activity)
+    api(libs.androidx.constraintlayout)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

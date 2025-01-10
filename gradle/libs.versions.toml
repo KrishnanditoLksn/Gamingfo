@@ -28,4 +28,5 @@ secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.se
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 

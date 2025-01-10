@@ -1,4 +1,4 @@
-package app.ditsdev.gamingfo.utils
+package app.ditsdev.core.utils
 
 import android.os.Handler
 import android.os.Looper
