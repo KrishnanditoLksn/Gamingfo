@@ -10,7 +10,8 @@ class MyApplication : Application() {
         startKoin {
             modules(
                 listOf(
-                    CoreModule.networkModule
+                    CoreModule.networkModule,
+                    CoreModule.databaseModule
                 )
             )
         }
