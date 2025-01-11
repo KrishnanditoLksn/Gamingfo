@@ -46,6 +46,11 @@ dependencies {
     api(libs.androidx.activity)
     api(libs.androidx.constraintlayout)
 
+    //Koin
+    api(libs.insert.koin.koin.core)
+    api(libs.insert.koin.koin.android)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
