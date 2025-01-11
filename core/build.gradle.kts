@@ -1,16 +1,19 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
     namespace = "app.ditsdev.core"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 28
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","BASE_URL" , "${project.findProperty("BASE_URL")}")
+        buildConfigField("String","API_KEY","${project.findProperty("API_KEY")}")
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -50,6 +53,11 @@ dependencies {
     api(libs.insert.koin.koin.core)
     api(libs.insert.koin.koin.android)
 
+    //RETROFIT , OKHTTP,GSON
+    api(libs.retrofit)
+    api(libs.converter.gson)
+    api(libs.okhttp)
+    api(libs.logging.interceptor)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
