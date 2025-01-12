@@ -69,4 +69,12 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler.v243)
     androidTestImplementation(libs.androidx.room.testing)
+
+
+    //RXJAVA
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.adapter.rxjava3)
+    implementation(libs.androidx.room.rxjava3)
+    implementation(libs.androidx.lifecycle.reactivestreams.ktx)
 }
