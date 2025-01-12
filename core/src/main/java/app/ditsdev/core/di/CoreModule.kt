@@ -34,7 +34,7 @@ object CoreModule {
     }
 
     val databaseModule = module {
-//        factory { get(<GameDatabase>) }
+        factory { get<GameDatabase>().gameDao() }
         single {
             Room.databaseBuilder(
                 androidContext(),
