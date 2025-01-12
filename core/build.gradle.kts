@@ -67,7 +67,7 @@ dependencies {
     //ROOM
     api(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler.v243)
+    ksp(libs.androidx.room.compiler)
     androidTestImplementation(libs.androidx.room.testing)
 
 
