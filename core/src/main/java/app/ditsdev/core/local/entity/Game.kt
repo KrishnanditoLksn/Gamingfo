@@ -26,6 +26,6 @@ data class Game(
     val rating: String,
 
     @ColumnInfo(name = "isFavorite")
-    val isFavorite: Boolean
+    val isFavorite: Boolean = false
 
 )
