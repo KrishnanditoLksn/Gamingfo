@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "publishers")
 data class PublisherEntity(
     @PrimaryKey
     @ColumnInfo(name = "idPublisher")
@@ -15,4 +15,4 @@ data class PublisherEntity(
 
     @ColumnInfo(name = "imageBackground")
     val imageBackground: String,
-    )
+)
