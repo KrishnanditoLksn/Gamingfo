@@ -15,4 +15,7 @@ data class PublisherEntity(
 
     @ColumnInfo(name = "imageBackground")
     val imageBackground: String,
+
+    @ColumnInfo(name = "gamesCount")
+    val gamesCount: Int,
 )
