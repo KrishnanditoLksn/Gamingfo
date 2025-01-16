@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Publisher(
     val idPublisher: Int,
     val name: String,
-    val imageBackground: String
+    val imageBackground: String,
+    val gamesCount:Int
 ) : Parcelable
