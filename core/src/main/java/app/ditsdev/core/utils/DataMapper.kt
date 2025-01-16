@@ -37,26 +37,20 @@ object DataMapper {
     Domain to Entities
      */
 
-    fun mapGameDomainToEntities(gameDomain: List<Game>): List<GameEntity> {
-        return gameDomain.map {
-            GameEntity(
-                gameId = it.gameId,
-                gameName = it.gameName,
-                rating = it.rating,
-                backgroundImage = it.backgroundImage,
-                released = it.released
-            )
-        }
-    }
+    fun mapGameDomainToEntities(gameDomain: Game) = GameEntity(
+        gameId = gameDomain.gameId,
+        gameName = gameDomain.gameName,
+        rating = gameDomain.rating,
+        backgroundImage = gameDomain.backgroundImage,
+        released = gameDomain.released,
+        isFavorite = gameDomain.isFavorite
+    )
 
-    fun mapPublisherDomainToEntities(publisherDomain: List<Publisher>): List<PublisherEntity> {
-        return publisherDomain.map {
-            PublisherEntity(
-                idPublisher = it.idPublisher,
-                name = it.name,
-                imageBackground = it.imageBackground,
-                gamesCount = it.gamesCount
-            )
-        }
-    }
 }
+
+fun mapPublisherDomainToEntities(publisherDomain: Publisher) = PublisherEntity(
+    idPublisher = publisherDomain.idPublisher,
+    name = publisherDomain.name,
+    imageBackground = publisherDomain.imageBackground,
+    gamesCount = publisherDomain.gamesCount
+)
