@@ -11,8 +11,8 @@ interface ApiService {
 
     @GET("games")
     fun getAllGames(
-        @Query("apiKey")
-        apiKey: String
+        @Query("key")
+        key: String
     )
             : Flowable<GameResponse>
 
@@ -20,22 +20,22 @@ interface ApiService {
     fun getDetailGame(
         @Path("id")
         id: String,
-        @Query("apiKey")
-        apiKey: String
+        @Query("key")
+        key: String
     ): Flowable<GameResponse>
 
     @GET("publishers")
     fun getAllPublisher(
-        @Query("apiKey")
-        apiKey: String
+        @Query("key")
+        key: String
     ): Flowable<PublisherResponse>
 
     @GET("publishers/{id}")
     fun getDetailPublisher(
         @Path("id")
         id: String,
-        @Query("apiKey")
-        apiKey: String
+        @Query("key")
+        key: String
     ): Flowable<PublisherResponse>
 
 }
