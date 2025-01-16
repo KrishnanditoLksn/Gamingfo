@@ -13,8 +13,8 @@ data class GameEntity(
     @ColumnInfo(name = "gameName")
     val gameName: String,
 
-    @ColumnInfo(name = "descriptionGame")
-    val descriptionGame: String,
+    @ColumnInfo(name = "rating")
+    val rating: String,
 
     @ColumnInfo(name = "backgroundImage")
     val backgroundImage: String,
@@ -22,8 +22,6 @@ data class GameEntity(
     @ColumnInfo(name = "released")
     val released: String,
 
-    @ColumnInfo(name = "rating")
-    val rating: String,
 
     @ColumnInfo(name = "isFavorite")
     val isFavorite: Boolean = false
