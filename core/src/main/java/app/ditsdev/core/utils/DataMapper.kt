@@ -4,8 +4,30 @@ import app.ditsdev.core.domain.model.Game
 import app.ditsdev.core.domain.model.Publisher
 import app.ditsdev.core.local.entity.GameEntity
 import app.ditsdev.core.local.entity.PublisherEntity
+import app.ditsdev.core.remote.network.responses.GamesItemResponse
+import app.ditsdev.core.remote.network.responses.PublisherResponse
+import app.ditsdev.core.remote.network.responses.ResultsItem
 
 object DataMapper {
+    /*
+    Response to Entity
+     */
+    fun mapGameResponseToEntity(gameResponse: List<GamesItemResponse>): List<GameEntity> {
+        val gameList = ArrayList<GameEntity>()
+
+        gameResponse.map {
+            val game = GameEntity(
+                gameId = it.id!!,
+                gameName = it.name!!,
+                rating = it.rating!!.toString(),
+                released = it.released!!,
+                backgroundImage = it.backgroundImage!!,
+                isFavorite = false
+            )
+            gameList.add(game)
+        }
+        return gameList
+    }
     /*
     Entities to Domain
      */
