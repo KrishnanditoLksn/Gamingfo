@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import app.ditsdev.core.local.entity.GameEntity
 import app.ditsdev.core.local.entity.PublisherEntity
 import io.reactivex.rxjava3.core.Completable
@@ -20,13 +21,9 @@ interface GameDao {
     @Query("SELECT * FROM games WHERE isFavorite = 1")
     fun getFavoriteGames(): Flowable<List<GameEntity>>
 
-    @Query("SELECT gameName,descriptionGame,released,rating FROM games WHERE gameId =:id")
-    fun getGameDetail(id: String): Flowable<GameEntity>
-
-
     @Query("SELECT * FROM publishers")
     fun getAllPublishers(): Flowable<List<PublisherEntity>>
 
-
-    //TBA PUB DETAILS:
+    @Update
+    fun updateFavoriteGame(game: GameEntity)
 }
