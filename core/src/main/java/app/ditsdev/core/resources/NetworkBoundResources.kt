@@ -82,5 +82,6 @@ abstract class NetworkBoundResources<ResultType : Any, RequestType> {
                     }
                 }
             }
+        mCompositeDisposable.add(response)
     }
 }
