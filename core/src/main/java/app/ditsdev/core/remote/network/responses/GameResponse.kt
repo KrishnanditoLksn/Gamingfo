@@ -38,7 +38,7 @@ data class GameResponse(
     val seoDescription: String? = null,
 
     @field:SerializedName("results")
-    val results: List<GamesItem?>? = null,
+    val results: List<GamesItemResponse> = emptyList(),
 
     @field:SerializedName("seo_keywords")
     val seoKeywords: String? = null
@@ -212,7 +212,7 @@ data class GamePlatformsItem(
     val platform: Platform? = null
 )
 
-data class GamesItem(
+data class GamesItemResponse(
 
     @field:SerializedName("added")
     val added: Int? = null,
