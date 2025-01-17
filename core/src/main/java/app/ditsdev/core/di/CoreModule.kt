@@ -4,11 +4,13 @@ import androidx.room.Room
 import app.ditsdev.core.BuildConfig
 import app.ditsdev.core.local.database.GameDatabase
 import app.ditsdev.core.remote.network.ApiService
+import app.ditsdev.core.remote.source.game.RemoteGameDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -26,6 +28,7 @@ object CoreModule {
         single {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(get())
                 .build()
@@ -41,5 +44,9 @@ object CoreModule {
                 GameDatabase::class.java, "Gamingfo.db"
             ).fallbackToDestructiveMigration().build()
         }
+    }
+
+    val repositoryModule = module {
+        single { RemoteGameDataSource(get()) }
     }
 }
