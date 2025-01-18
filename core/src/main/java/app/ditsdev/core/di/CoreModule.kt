@@ -4,6 +4,7 @@ import androidx.room.Room
 import app.ditsdev.core.BuildConfig
 import app.ditsdev.core.local.database.GameDatabase
 import app.ditsdev.core.remote.network.ApiService
+import app.ditsdev.core.remote.source.game.LocalGameDataSource
 import app.ditsdev.core.remote.source.game.RemoteGameDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -48,5 +49,6 @@ object CoreModule {
 
     val repositoryModule = module {
         single { RemoteGameDataSource(get()) }
+        single { LocalGameDataSource(get()) }
     }
 }

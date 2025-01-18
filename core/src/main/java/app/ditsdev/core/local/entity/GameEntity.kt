@@ -24,6 +24,6 @@ data class GameEntity(
 
 
     @ColumnInfo(name = "isFavorite")
-    val isFavorite: Boolean = false
+    var isFavorite: Boolean = false
 
 )
