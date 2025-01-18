@@ -43,4 +43,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+
+    //COIL LOADER
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
 }
