@@ -2,13 +2,15 @@ package app.ditsdev.core.resources
 
 import app.ditsdev.core.result.api.ApiResponseResult
 import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.utils.AppExecutor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
 
-abstract class NetworkBoundResources<ResultType : Any, RequestType> {
+abstract class NetworkBoundResources<ResultType : Any, RequestType>(private val appExecutor: AppExecutor) {
     private val result = PublishSubject.create<ResourceResult<ResultType>>()
     private val mCompositeDisposable = CompositeDisposable()
 
@@ -83,5 +85,9 @@ abstract class NetworkBoundResources<ResultType : Any, RequestType> {
                 }
             }
         mCompositeDisposable.add(response)
+    }
+
+    fun asFlowable(): Flowable<ResourceResult<ResultType>> {
+        return result.toFlowable(BackpressureStrategy.BUFFER)
     }
 }
