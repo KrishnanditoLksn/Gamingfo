@@ -45,7 +45,10 @@ class HomeFragment : Fragment() {
             binding.rvHeadlines.apply {
                 adapter = gameAdapter
                 setHasFixedSize(true)
-                layoutManager = GridLayoutManager(requireContext(), 2)
+                layoutManager = GridLayoutManager(requireContext(), 1)
+                    .apply {
+                        orientation = GridLayoutManager.HORIZONTAL
+                    }
             }
         }
     }
