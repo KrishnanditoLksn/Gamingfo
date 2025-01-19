@@ -5,6 +5,7 @@ import app.ditsdev.core.di.CoreModule
 import app.ditsdev.gamingfo.di.AppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
@@ -14,7 +15,7 @@ class MyApplication : Application() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@MyApplication)
-            modules(
+            loadKoinModules(
                 listOf(
                     CoreModule.networkModule,
                     CoreModule.databaseModule,
