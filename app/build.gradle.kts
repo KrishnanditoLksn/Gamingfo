@@ -43,6 +43,8 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    api(libs.recyclerview)
+    api(libs.material)
 
     //COIL LOADER
     implementation(libs.coil)
