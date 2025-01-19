@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.annotation.VisibleForTesting
 import java.util.concurrent.Executor
+import java.util.concurrent.Executors
 
 class AppExecutor @VisibleForTesting constructor(
     private val diskIO: Executor,
@@ -16,6 +17,11 @@ class AppExecutor @VisibleForTesting constructor(
 
     //Will be inject the constructor after completed import required DI libs
 
+    constructor() : this(
+        Executors.newSingleThreadExecutor(),
+        Executors.newFixedThreadPool(THREAD_COUNT),
+        MainThreadExecutor()
+    )
 
     fun diskIO(): Executor = diskIO
 

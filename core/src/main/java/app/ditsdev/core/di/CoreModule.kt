@@ -2,10 +2,15 @@ package app.ditsdev.core.di
 
 import androidx.room.Room
 import app.ditsdev.core.BuildConfig
+import app.ditsdev.core.domain.interactor.GameInteractor
+import app.ditsdev.core.domain.repository.GameRepository
+import app.ditsdev.core.domain.repository.ImplGameRepository
+import app.ditsdev.core.domain.usecase.GameUseCase
 import app.ditsdev.core.local.database.GameDatabase
 import app.ditsdev.core.remote.network.ApiService
 import app.ditsdev.core.remote.source.game.LocalGameDataSource
 import app.ditsdev.core.remote.source.game.RemoteGameDataSource
+import app.ditsdev.core.utils.AppExecutor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -50,5 +55,11 @@ object CoreModule {
     val repositoryModule = module {
         single { RemoteGameDataSource(get()) }
         single { LocalGameDataSource(get()) }
+        factory { AppExecutor() }
+        single<ImplGameRepository> { GameRepository(get(), get(), get()) }
+    }
+
+    val useCaseModule = module {
+        factory<GameUseCase> { GameInteractor(get()) }
     }
 }
