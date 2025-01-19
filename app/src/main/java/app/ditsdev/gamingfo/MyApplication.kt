@@ -2,6 +2,7 @@ package app.ditsdev.gamingfo
 
 import android.app.Application
 import app.ditsdev.core.di.CoreModule
+import app.ditsdev.gamingfo.di.AppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -18,7 +19,8 @@ class MyApplication : Application() {
                     CoreModule.networkModule,
                     CoreModule.databaseModule,
                     CoreModule.repositoryModule,
-                    CoreModule.useCaseModule
+                    CoreModule.useCaseModule,
+                    AppModule.viewModelModule
                 )
             )
         }
