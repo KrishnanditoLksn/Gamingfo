@@ -1,12 +1,12 @@
 package app.ditsdev.core.domain.interactor
 
 import app.ditsdev.core.domain.model.Game
-import app.ditsdev.core.domain.repository.GameRepository
+import app.ditsdev.core.domain.repository.ImplGameRepository
 import app.ditsdev.core.domain.usecase.GameUseCase
 import app.ditsdev.core.result.resource.ResourceResult
 import io.reactivex.rxjava3.core.Flowable
 
-class GameInteractor(private val gameRepository: GameRepository) : GameUseCase {
+class GameInteractor(private val gameRepository: ImplGameRepository) : GameUseCase {
     override fun getAllGames(): Flowable<ResourceResult<List<Game>>> {
         return gameRepository.getAllGames()
     }
