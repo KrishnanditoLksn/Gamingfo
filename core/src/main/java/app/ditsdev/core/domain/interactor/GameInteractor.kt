@@ -7,7 +7,7 @@ import app.ditsdev.core.result.resource.ResourceResult
 import io.reactivex.rxjava3.core.Flowable
 
 class GameInteractor(private val gameRepository: GameRepository) : GameUseCase {
-    override fun getAllTourism(): Flowable<ResourceResult<List<Game>>> {
+    override fun getAllGames(): Flowable<ResourceResult<List<Game>>> {
         return gameRepository.getAllGames()
     }
 
