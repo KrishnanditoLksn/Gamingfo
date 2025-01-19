@@ -17,7 +17,8 @@ class MyApplication : Application() {
                 listOf(
                     CoreModule.networkModule,
                     CoreModule.databaseModule,
-                    CoreModule.repositoryModule
+                    CoreModule.repositoryModule,
+                    CoreModule.useCaseModule
                 )
             )
         }
