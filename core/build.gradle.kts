@@ -73,9 +73,9 @@ dependencies {
 
 
     //RXJAVA
-    implementation(libs.rxjava)
-    implementation(libs.rxandroid)
-    implementation(libs.adapter.rxjava3)
-    implementation(libs.androidx.room.rxjava3)
-    implementation(libs.androidx.lifecycle.reactivestreams.ktx)
+    api(libs.rxjava)
+    api(libs.rxandroid)
+    api(libs.adapter.rxjava3)
+    api(libs.androidx.room.rxjava3)
+    api(libs.androidx.lifecycle.reactivestreams.ktx)
 }
