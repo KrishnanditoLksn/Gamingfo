@@ -27,7 +27,7 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
         fun bind(data: Game) {
             binding.ivGameImage.load(data.backgroundImage)
             binding.tvGameName.text = data.gameName
-            binding.tvRatingGame.text = data.rating
+            binding.tvRatingGame.rating = data.rating.toFloat()
         }
     }
 
