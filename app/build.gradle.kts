@@ -39,6 +39,7 @@ android {
         viewBinding = true
         buildConfig = true
     }
+    dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
@@ -49,4 +50,6 @@ dependencies {
     //COIL LOADER
     implementation(libs.coil)
     implementation(libs.coil.network.okhttp)
+
+    api(libs.androidx.navigation.dynamic.features.fragment)
 }

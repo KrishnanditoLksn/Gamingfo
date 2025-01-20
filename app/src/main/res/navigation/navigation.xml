@@ -10,4 +10,11 @@
         android:label="fragmentHome"
         android:layout="@layout/fragment_home">
     </fragment>
+
+    <fragment
+        app:moduleName="favorite"
+        android:id="@+id/favorites"
+        android:label="fragmentFavorite"
+        android:name="app.ditsdev.favorite.FavoriteFragment">
+    </fragment>
 </navigation>
