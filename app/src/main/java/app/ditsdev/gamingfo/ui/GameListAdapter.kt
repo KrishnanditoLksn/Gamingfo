@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.ditsdev.core.domain.model.Game
-import app.ditsdev.core.utils.KeyExtras
 import app.ditsdev.gamingfo.databinding.ItemGameRowBinding
 import app.ditsdev.gamingfo.ui.detail.DetailGameActivity
 import coil3.load
@@ -35,11 +34,7 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
             binding.clItem.setOnClickListener {
                 val context = binding.root.context
                 val intent = Intent(context, DetailGameActivity::class.java)
-                intent.putExtra(KeyExtras.EXTRA_NAME, data.gameName)
-                intent.putExtra(KeyExtras.EXTRA_RATING, data.rating)
-                intent.putExtra(KeyExtras.EXTRA_ISFAVORITE, data.isFavorite)
-                intent.putExtra(KeyExtras.EXTRA_IMAGE, data.backgroundImage)
-                intent.putExtra(KeyExtras.EXTRA_RELEASED, data.released)
+                intent.putExtra(EXTRA_DATAS, data)
                 context.startActivity(intent)
             }
         }
@@ -57,5 +52,7 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
             }
 
         }
+
+        const val EXTRA_DATAS = "extra_datas"
     }
 }
