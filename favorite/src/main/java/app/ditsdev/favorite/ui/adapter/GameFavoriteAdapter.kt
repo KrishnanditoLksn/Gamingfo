@@ -11,7 +11,7 @@ import app.ditsdev.favorite.databinding.FavoriteItemRowBinding
 import app.ditsdev.gamingfo.ui.detail.DetailGameActivity
 import coil3.load
 
-class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLBACK) {
+class GameFavoriteAdapter : ListAdapter<Game, GameFavoriteAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -19,7 +19,7 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: GameListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GameFavoriteAdapter.ViewHolder, position: Int) {
         val items = getItem(position)
         holder.bind(items)
 
@@ -31,7 +31,6 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
             binding.ivFavoriteGameImage.load(data.backgroundImage)
             binding.tvFavGameName.text = data.gameName
             binding.tvFavoriteRatingGame.text = data.rating
-            binding.ivFavoriteStatus.setImageResource(data.isFavorite.toInt())
 
             binding.cliFavItem.setOnClickListener {
                 val context = binding.root.context
