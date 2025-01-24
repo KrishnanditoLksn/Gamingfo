@@ -6,7 +6,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 object FavoriteModule {
-    val favoriteViewModel = module {
+    val favoriteFeatureModule = module {
         viewModel { FavoriteViewModel(get()) }
     }
 }
