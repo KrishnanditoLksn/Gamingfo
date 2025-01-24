@@ -48,8 +48,8 @@ dependencies {
     api(libs.material)
 
     //COIL LOADER
-    implementation(libs.coil)
-    implementation(libs.coil.network.okhttp)
+    api(libs.coil)
+    api(libs.coil.network.okhttp)
 
     api(libs.androidx.navigation.dynamic.features.fragment)
 }
