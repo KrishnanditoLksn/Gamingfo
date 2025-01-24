@@ -14,8 +14,8 @@ import org.koin.core.context.loadKoinModules
 
 
 class FavoriteFragment : Fragment() {
-    private val loadFeatures by lazy { loadKoinModules(FavoriteModule.favoriteFeatureModule) }
-    private fun injectFeatures() = loadFeatures
+    private val loadFeature by lazy { loadKoinModules(FavoriteModule.favoriteFeatureModule) }
+    private fun injectFeature() = loadFeature
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -28,7 +28,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        injectFeatures()
         val favAdapter = GameFavoriteAdapter()
         favoriteViewModel.getAllFavoriteGames().observe(viewLifecycleOwner) {
             favAdapter.submitList(it)
@@ -38,5 +37,10 @@ class FavoriteFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        injectFeature()
     }
 }
