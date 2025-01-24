@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import app.ditsdev.core.local.entity.GameEntity
-import app.ditsdev.core.local.entity.PublisherEntity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
@@ -20,9 +19,6 @@ interface GameDao {
 
     @Query("SELECT * FROM games WHERE isFavorite = 1")
     fun getFavoriteGames(): Flowable<List<GameEntity>>
-
-    @Query("SELECT * FROM publishers")
-    fun getAllPublishers(): Flowable<List<PublisherEntity>>
 
     @Update
     fun updateFavoriteGame(game: GameEntity)
