@@ -9,4 +9,5 @@
     <string name="template_2">With global warming projected to rocket past the…</string>
     <string name="title_favorite">Favorites</string>
     <string name="detail_game">Detail Game</string>
+    <string name="games_count">Games Count:</string>
 </resources>
