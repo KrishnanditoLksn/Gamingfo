@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import app.ditsdev.favorite.core.di.FavoriteModule
 import app.ditsdev.favorite.databinding.FragmentFavoriteBinding
 import app.ditsdev.favorite.ui.adapter.GameFavoriteAdapter
-import app.ditsdev.gamingfo.ui.FavoriteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 
 class FavoriteFragment : Fragment() {
+    private val loadFeature by lazy { loadKoinModules(FavoriteModule.favoriteFeatureModule) }
+    private fun injectFeature() = loadFeature
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -34,5 +37,10 @@ class FavoriteFragment : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        injectFeature()
     }
 }

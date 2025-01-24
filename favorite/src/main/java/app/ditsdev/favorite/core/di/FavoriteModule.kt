@@ -1,7 +1,7 @@
-package app.ditsdev.gamingfo.di
+package app.ditsdev.favorite.core.di
 
 
-import app.ditsdev.gamingfo.ui.FavoriteViewModel
+import app.ditsdev.favorite.FavoriteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,4 +1,4 @@
-package app.ditsdev.gamingfo.ui
+package app.ditsdev.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.toLiveData

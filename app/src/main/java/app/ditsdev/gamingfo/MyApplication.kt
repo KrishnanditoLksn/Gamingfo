@@ -3,7 +3,6 @@ package app.ditsdev.gamingfo
 import android.app.Application
 import app.ditsdev.core.di.CoreModule
 import app.ditsdev.gamingfo.di.AppModule
-import app.ditsdev.gamingfo.di.FavoriteModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.loadKoinModules
@@ -23,7 +22,6 @@ class MyApplication : Application() {
                     CoreModule.repositoryModule,
                     CoreModule.useCaseModule,
                     AppModule.viewModelModule,
-                    FavoriteModule.favoriteFeatureModule
                 )
             )
         }
