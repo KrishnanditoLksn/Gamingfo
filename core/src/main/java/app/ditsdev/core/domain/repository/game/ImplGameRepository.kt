@@ -1,4 +1,4 @@
-package app.ditsdev.core.domain.repository
+package app.ditsdev.core.domain.repository.game
 
 import app.ditsdev.core.domain.model.Game
 import app.ditsdev.core.result.resource.ResourceResult
