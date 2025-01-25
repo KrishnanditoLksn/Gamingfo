@@ -5,6 +5,7 @@ import app.ditsdev.core.domain.model.Publisher
 import app.ditsdev.core.local.entity.GameEntity
 import app.ditsdev.core.local.entity.PublisherEntity
 import app.ditsdev.core.remote.network.responses.GamesItemResponse
+import app.ditsdev.core.remote.network.responses.ResultsItem
 
 object DataMapper {
     /*
@@ -25,6 +26,21 @@ object DataMapper {
             gameList.add(game)
         }
         return gameList
+    }
+
+    fun mapPublisherResponseToEntity(publisherResponse: List<ResultsItem>): List<PublisherEntity> {
+        val publisherList = ArrayList<PublisherEntity>()
+
+        publisherResponse.map {
+            val pubs = PublisherEntity(
+                idPublisher = it.id!!,
+                name = it.name!!,
+                imageBackground = it.imageBackground!!,
+                gamesCount = it.gamesCount!!
+            )
+            publisherList.add(pubs)
+        }
+        return publisherList
     }
 
     /*
