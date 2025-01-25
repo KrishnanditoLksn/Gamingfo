@@ -14,7 +14,7 @@ data class PublisherResponse(
     val count: Int? = null,
 
     @field:SerializedName("results")
-    val results: List<ResultsItem?>? = null
+    val results: List<ResultsItem> = emptyList()
 )
 
 data class PublisherGamesItem(
