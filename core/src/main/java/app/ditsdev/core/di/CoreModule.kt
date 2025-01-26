@@ -3,13 +3,17 @@ package app.ditsdev.core.di
 import androidx.room.Room
 import app.ditsdev.core.BuildConfig
 import app.ditsdev.core.domain.interactor.GameInteractor
-import app.ditsdev.core.domain.repository.GameRepository
-import app.ditsdev.core.domain.repository.ImplGameRepository
+import app.ditsdev.core.domain.repository.game.GameRepository
+import app.ditsdev.core.domain.repository.game.ImplGameRepository
+import app.ditsdev.core.domain.repository.publisher.ImplPublisherRepository
+import app.ditsdev.core.domain.repository.publisher.PublisherRepository
 import app.ditsdev.core.domain.usecase.GameUseCase
 import app.ditsdev.core.local.database.GameDatabase
 import app.ditsdev.core.remote.network.ApiService
 import app.ditsdev.core.remote.source.game.LocalGameDataSource
 import app.ditsdev.core.remote.source.game.RemoteGameDataSource
+import app.ditsdev.core.remote.source.publisher.LocalPublisherDataSource
+import app.ditsdev.core.remote.source.publisher.RemotePublisherDataSource
 import app.ditsdev.core.utils.AppExecutor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,6 +48,7 @@ object CoreModule {
 
     val databaseModule = module {
         factory { get<GameDatabase>().gameDao() }
+        factory { get<GameDatabase>().publisherDao() }
         single {
             Room.databaseBuilder(
                 androidContext(),
@@ -57,6 +62,13 @@ object CoreModule {
         single { LocalGameDataSource(get()) }
         factory { AppExecutor() }
         single<ImplGameRepository> { GameRepository(get(), get(), get()) }
+    }
+
+    val publisherRepositoryModule = module {
+        single { RemotePublisherDataSource(get()) }
+        single { LocalPublisherDataSource(get()) }
+        factory { AppExecutor() }
+        single<ImplPublisherRepository> { PublisherRepository(get(), get(), get()) }
     }
 
     val useCaseModule = module {

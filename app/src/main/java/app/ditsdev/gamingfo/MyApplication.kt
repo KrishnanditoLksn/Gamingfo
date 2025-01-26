@@ -22,6 +22,7 @@ class MyApplication : Application() {
                     CoreModule.repositoryModule,
                     CoreModule.useCaseModule,
                     AppModule.viewModelModule,
+                    CoreModule.publisherRepositoryModule
                 )
             )
         }
