@@ -3,11 +3,13 @@ package app.ditsdev.core.di
 import androidx.room.Room
 import app.ditsdev.core.BuildConfig
 import app.ditsdev.core.domain.interactor.GameInteractor
+import app.ditsdev.core.domain.interactor.PublisherInteractor
 import app.ditsdev.core.domain.repository.game.GameRepository
 import app.ditsdev.core.domain.repository.game.ImplGameRepository
 import app.ditsdev.core.domain.repository.publisher.ImplPublisherRepository
 import app.ditsdev.core.domain.repository.publisher.PublisherRepository
 import app.ditsdev.core.domain.usecase.GameUseCase
+import app.ditsdev.core.domain.usecase.PublisherUseCase
 import app.ditsdev.core.local.database.GameDatabase
 import app.ditsdev.core.remote.network.ApiService
 import app.ditsdev.core.remote.source.game.LocalGameDataSource
@@ -73,5 +75,6 @@ object CoreModule {
 
     val useCaseModule = module {
         factory<GameUseCase> { GameInteractor(get()) }
+        factory<PublisherUseCase> { PublisherInteractor(get()) }
     }
 }
