@@ -50,9 +50,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPublishers"
-            android:layout_width="410dp"
-            android:layout_height="284dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="408dp"
+            android:layout_height="299dp"
+            android:layout_marginTop="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
