@@ -44,6 +44,7 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":search"))
     api(libs.recyclerview)
     api(libs.material)
 
