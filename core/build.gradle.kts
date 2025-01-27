@@ -55,6 +55,13 @@ dependencies {
     api(libs.insert.koin.koin.core)
     api(libs.insert.koin.koin.android)
 
+    api(libs.recyclerview)
+    api(libs.material)
+
+    //COIL LOADER
+    api(libs.coil)
+    api(libs.coil.network.okhttp)
+
     //RETROFIT , OKHTTP,GSON
     api(libs.retrofit)
     api(libs.converter.gson)
