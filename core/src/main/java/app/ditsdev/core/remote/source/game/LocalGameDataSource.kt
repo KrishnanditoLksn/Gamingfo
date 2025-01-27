@@ -14,4 +14,6 @@ class LocalGameDataSource(private val gameDao: GameDao) {
     }
 
     fun insertGame(game: List<GameEntity>) = gameDao.insertGame(game)
+
+    fun searchGames(params: String) = gameDao.searchGames(params)
 }
