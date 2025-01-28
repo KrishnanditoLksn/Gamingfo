@@ -3,7 +3,7 @@ package app.ditsdev.core.domain.interactor
 import app.ditsdev.core.domain.model.Game
 import app.ditsdev.core.domain.repository.game.ImplGameRepository
 import app.ditsdev.core.domain.usecase.GameUseCase
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import io.reactivex.rxjava3.core.Flowable
 
 class GameInteractor(private val gameRepository: ImplGameRepository) : GameUseCase {
