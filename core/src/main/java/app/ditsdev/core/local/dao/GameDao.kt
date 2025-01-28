@@ -22,4 +22,7 @@ interface GameDao {
 
     @Update
     fun updateFavoriteGame(game: GameEntity)
+
+    @Query("SELECT * FROM games WHERE gameName LIKE :params || '%' ")
+    fun searchGames(params: String): Flowable<List<GameEntity>>
 }

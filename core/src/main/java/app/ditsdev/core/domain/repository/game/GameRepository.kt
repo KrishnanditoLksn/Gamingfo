@@ -58,4 +58,10 @@ class GameRepository(
             )
         }
     }
+
+    override fun searchGames(params: String): Flowable<List<Game>> {
+        return localGameDataSource.searchGames(params).map {
+            DataMapper.mapGameEntitiesToDomain(it)
+        }
+    }
 }

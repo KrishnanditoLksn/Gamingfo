@@ -18,4 +18,8 @@ class GameInteractor(private val gameRepository: ImplGameRepository) : GameUseCa
     override fun setFavoriteGames(game: Game, state: Boolean) {
         gameRepository.setFavoriteGames(game, state)
     }
+
+    override fun searchGames(params: String): Flowable<List<Game>> {
+        return gameRepository.searchGames(params)
+    }
 }

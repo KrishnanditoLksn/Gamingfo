@@ -44,12 +44,7 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    api(libs.recyclerview)
-    api(libs.material)
-
-    //COIL LOADER
-    api(libs.coil)
-    api(libs.coil.network.okhttp)
+    implementation(project(":search"))
 
     api(libs.androidx.navigation.dynamic.features.fragment)
 }

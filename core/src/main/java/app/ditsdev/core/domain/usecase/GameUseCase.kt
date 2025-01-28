@@ -8,4 +8,6 @@ interface GameUseCase {
     fun getAllGames():Flowable<ResourceResult<List<Game>>>
     fun getFavoriteGames():Flowable<List<Game>>
     fun setFavoriteGames(game:Game,state:Boolean)
+
+    fun searchGames(params:String):Flowable<List<Game>>
 }
