@@ -1,4 +1,4 @@
-package app.ditsdev.core.remote.network.responses
+package app.ditsdev.core.data.source.remote.network.responses
 
 import com.google.gson.annotations.SerializedName
 

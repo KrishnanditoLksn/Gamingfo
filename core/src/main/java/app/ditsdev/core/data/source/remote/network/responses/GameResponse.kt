@@ -1,4 +1,4 @@
-package app.ditsdev.core.remote.network.responses
+package app.ditsdev.core.data.source.remote.network.responses
 
 import com.google.gson.annotations.SerializedName
 
@@ -125,14 +125,6 @@ data class Store(
     val slug: String? = null
 )
 
-data class RequirementsRu(
-
-    @field:SerializedName("minimum")
-    val minimum: String? = null,
-
-    @field:SerializedName("recommended")
-    val recommended: String? = null
-)
 
 data class TagsItem(
 
@@ -244,8 +236,6 @@ data class GamesItemResponse(
     @field:SerializedName("ratings")
     val ratings: List<RatingsItem?>? = null,
 
-    @field:SerializedName("genres")
-    val genres: List<GenresItem?>? = null,
 
     @field:SerializedName("saturated_color")
     val saturatedColor: String? = null,
@@ -285,9 +275,6 @@ data class GamesItemResponse(
 
     @field:SerializedName("dominant_color")
     val dominantColor: String? = null,
-
-    @field:SerializedName("esrb_rating")
-    val esrbRating: EsrbRating? = null,
 
     @field:SerializedName("name")
     val name: String? = null,
