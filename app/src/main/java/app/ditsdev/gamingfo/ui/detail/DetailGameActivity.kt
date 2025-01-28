@@ -7,7 +7,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import app.ditsdev.core.domain.model.Game
-import app.ditsdev.gamingfo.R
 import app.ditsdev.gamingfo.databinding.ActivityDetailGameBinding
 import app.ditsdev.gamingfo.ui.GameListAdapter
 import coil3.load
@@ -51,14 +50,14 @@ class DetailGameActivity : AppCompatActivity() {
             binding.fabFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
-                    R.drawable.baseline_bookmark_24
+                    app.ditsdev.core.R.drawable.baseline_bookmark_24
                 )
             )
         } else {
             binding.fabFavorite.setImageDrawable(
                 ContextCompat.getDrawable(
                     this,
-                    R.drawable.baseline_bookmark_border_24
+                    app.ditsdev.core.R.drawable.baseline_bookmark_border_24
                 )
             )
         }
