@@ -1,7 +1,7 @@
-package app.ditsdev.core.remote.source.game
+package app.ditsdev.core.data.source.local
 
-import app.ditsdev.core.local.dao.GameDao
-import app.ditsdev.core.local.entity.GameEntity
+import app.ditsdev.core.data.source.local.dao.GameDao
+import app.ditsdev.core.data.source.local.entity.GameEntity
 import io.reactivex.rxjava3.core.Flowable
 
 class LocalGameDataSource(private val gameDao: GameDao) {
