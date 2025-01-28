@@ -1,12 +1,13 @@
-package app.ditsdev.core.domain.repository.publisher
+package app.ditsdev.core.data
 
 import app.ditsdev.core.domain.model.Publisher
-import app.ditsdev.core.remote.network.responses.ResultsItem
-import app.ditsdev.core.remote.source.publisher.LocalPublisherDataSource
-import app.ditsdev.core.remote.source.publisher.RemotePublisherDataSource
-import app.ditsdev.core.resources.NetworkBoundResources
-import app.ditsdev.core.result.api.ApiResponseResult
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.source.remote.network.responses.ResultsItem
+import app.ditsdev.core.data.source.local.LocalPublisherDataSource
+import app.ditsdev.core.data.source.remote.RemotePublisherDataSource
+import app.ditsdev.core.domain.repository.publisher.ImplPublisherRepository
+import app.ditsdev.core.data.resources.NetworkBoundResources
+import app.ditsdev.core.data.result.api.ApiResponseResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import app.ditsdev.core.utils.AppExecutor
 import app.ditsdev.core.utils.DataMapper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
