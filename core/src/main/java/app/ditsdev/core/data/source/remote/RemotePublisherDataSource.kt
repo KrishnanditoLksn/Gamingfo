@@ -1,10 +1,10 @@
-package app.ditsdev.core.remote.source.publisher
+package app.ditsdev.core.data.source.remote
 
 import android.annotation.SuppressLint
 import app.ditsdev.core.BuildConfig
-import app.ditsdev.core.remote.network.ApiService
-import app.ditsdev.core.remote.network.responses.ResultsItem
-import app.ditsdev.core.result.api.ApiResponseResult
+import app.ditsdev.core.data.source.remote.network.ApiService
+import app.ditsdev.core.data.source.remote.network.responses.ResultsItem
+import app.ditsdev.core.data.result.api.ApiResponseResult
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Flowable

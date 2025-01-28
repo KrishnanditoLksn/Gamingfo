@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import app.ditsdev.gamingfo.databinding.FragmentHomeBinding
 import app.ditsdev.gamingfo.ui.GameListAdapter
 import app.ditsdev.gamingfo.ui.PublisherListAdapter

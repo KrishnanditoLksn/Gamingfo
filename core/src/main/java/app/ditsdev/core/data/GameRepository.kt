@@ -1,12 +1,13 @@
-package app.ditsdev.core.domain.repository.game
+package app.ditsdev.core.data
 
 import app.ditsdev.core.domain.model.Game
-import app.ditsdev.core.remote.network.responses.GamesItemResponse
-import app.ditsdev.core.remote.source.game.LocalGameDataSource
-import app.ditsdev.core.remote.source.game.RemoteGameDataSource
-import app.ditsdev.core.resources.NetworkBoundResources
-import app.ditsdev.core.result.api.ApiResponseResult
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.source.remote.network.responses.GamesItemResponse
+import app.ditsdev.core.data.source.local.LocalGameDataSource
+import app.ditsdev.core.data.source.remote.RemoteGameDataSource
+import app.ditsdev.core.domain.repository.game.ImplGameRepository
+import app.ditsdev.core.data.resources.NetworkBoundResources
+import app.ditsdev.core.data.result.api.ApiResponseResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import app.ditsdev.core.utils.AppExecutor
 import app.ditsdev.core.utils.DataMapper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

@@ -1,7 +1,7 @@
 package app.ditsdev.core.domain.usecase
 
 import app.ditsdev.core.domain.model.Game
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import io.reactivex.rxjava3.core.Flowable
 
 interface GameUseCase {

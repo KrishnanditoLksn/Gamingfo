@@ -1,4 +1,4 @@
-package app.ditsdev.core.local.entity
+package app.ditsdev.core.data.source.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

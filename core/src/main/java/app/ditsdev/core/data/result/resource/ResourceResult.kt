@@ -1,4 +1,4 @@
-package app.ditsdev.core.result.resource
+package app.ditsdev.core.data.result.resource
 
 sealed class ResourceResult<T>(val data: T? = null, val message: String? = null) {
     class Success<T>(data: T) : ResourceResult<T>(data)
