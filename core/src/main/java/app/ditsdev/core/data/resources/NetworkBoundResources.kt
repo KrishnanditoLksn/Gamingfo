@@ -1,7 +1,7 @@
-package app.ditsdev.core.resources
+package app.ditsdev.core.data.resources
 
-import app.ditsdev.core.result.api.ApiResponseResult
-import app.ditsdev.core.result.resource.ResourceResult
+import app.ditsdev.core.data.result.api.ApiResponseResult
+import app.ditsdev.core.data.result.resource.ResourceResult
 import app.ditsdev.core.utils.AppExecutor
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
