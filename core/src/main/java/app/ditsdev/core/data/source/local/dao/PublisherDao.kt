@@ -1,10 +1,10 @@
-package app.ditsdev.core.local.dao
+package app.ditsdev.core.data.source.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import app.ditsdev.core.local.entity.PublisherEntity
+import app.ditsdev.core.data.source.local.entity.PublisherEntity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
