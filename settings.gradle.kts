@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Gamingfo"
 include(":app")
- 
+include(":core")
+include(":favorite")
+include(":search")

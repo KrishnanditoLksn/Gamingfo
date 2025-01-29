@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="app.ditsdev.gamingfo.ui.home.HomeFragment"
+        android:label="fragmentHome"
+        android:layout="@layout/fragment_home">
+    </fragment>
+
+    <fragment
+        app:moduleName="favorite"
+        android:id="@+id/favorites"
+        android:label="fragmentFavorite"
+        android:name="app.ditsdev.favorite.FavoriteFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/search"
+        android:name="app.ditsdev.search.presentation.ui.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+        <deepLink
+            app:uri="app://ditsdev/search" />
+    </fragment>
+
+</navigation>

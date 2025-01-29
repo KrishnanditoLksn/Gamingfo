@@ -11,10 +11,11 @@ android {
         applicationId = "app.ditsdev.gamingfo"
         minSdk = 28
         targetSdk = 34
+        //noinspection OldTargetApi
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -33,16 +34,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+    dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":search"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.androidx.navigation.dynamic.features.fragment)
 }
