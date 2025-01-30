@@ -9,7 +9,17 @@ import app.ditsdev.core.databinding.ItemGameRowBinding
 import app.ditsdev.core.domain.model.Game
 import coil3.load
 
-class GameResultAdapter : ListAdapter<Game, GameResultAdapter.ViewHolder>(DIFF_CALLBACK) {
+class GameResultAdapter : ListAdapter<Game, GameResultAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<Game>() {
+        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+
+        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+    }
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemGameRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,19 +38,6 @@ class GameResultAdapter : ListAdapter<Game, GameResultAdapter.ViewHolder>(DIFF_C
             binding.ivGameImage.load(data.backgroundImage)
             binding.tvGameName.text = data.gameName
             binding.tvRatingGame.rating = data.rating.toFloat()
-        }
-    }
-
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Game>() {
-            override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
-
-            override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
         }
     }
 }
