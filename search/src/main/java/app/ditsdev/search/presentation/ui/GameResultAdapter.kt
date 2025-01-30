@@ -28,13 +28,6 @@ class GameResultAdapter : ListAdapter<Game, GameResultAdapter.ViewHolder>(DIFF_C
             binding.ivGameImage.load(data.backgroundImage)
             binding.tvGameName.text = data.gameName
             binding.tvRatingGame.rating = data.rating.toFloat()
-
-            binding.clItem.setOnClickListener {
-//                val context = binding.root.context
-//                val intent = Intent(context, DetailGameActivity::class.java)
-//                intent.putExtra(EXTRA_DATAS, data)
-//                context.startActivity(intent)
-            }
         }
     }
 
@@ -48,9 +41,6 @@ class GameResultAdapter : ListAdapter<Game, GameResultAdapter.ViewHolder>(DIFF_C
             override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
                 return oldItem.gameId == newItem.gameId
             }
-
         }
-
-        const val EXTRA_DATAS = "extra_datas"
     }
 }
