@@ -24,20 +24,22 @@ class DetailGameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val gameName = intent.getParcelableExtra(GameListAdapter.EXTRA_DATAS, Game::class.java)
-        var isFavorite = gameName!!.isFavorite
-        with(binding) {
-            tvDetailGameName.text = gameName.gameName
-            tvDetailRatingGame.rating = gameName.rating.toFloat()
-            ivDetailGame.load(gameName.backgroundImage)
-            tvDetailReleaseDate.text = gameName.released
-            btnBack.setOnClickListener {
-                backPressed()
-            }
-            setFavoriteStatus(isFavorite)
-            fabFavorite.setOnClickListener {
-                isFavorite = !isFavorite
-                detailVm.setFavoriteGames(gameName, isFavorite)
+        if (gameName != null) {
+            var isFavorite = gameName.isFavorite
+            with(binding) {
+                tvDetailGameName.text = gameName.gameName
+                tvDetailRatingGame.rating = gameName.rating.toFloat()
+                ivDetailGame.load(gameName.backgroundImage)
+                tvDetailReleaseDate.text = gameName.released
+                btnBack.setOnClickListener {
+                    backPressed()
+                }
                 setFavoriteStatus(isFavorite)
+                fabFavorite.setOnClickListener {
+                    isFavorite = !isFavorite
+                    detailVm.setFavoriteGames(gameName, isFavorite)
+                    setFavoriteStatus(isFavorite)
+                }
             }
         }
 
