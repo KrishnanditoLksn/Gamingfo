@@ -15,7 +15,6 @@ import org.koin.core.context.loadKoinModules
 
 class FavoriteFragment : Fragment() {
     private val loadFeature by lazy { loadKoinModules(FavoriteModule.favoriteFeatureModule) }
-    private fun injectFeature() = loadFeature
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -41,6 +40,6 @@ class FavoriteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        injectFeature()
+        loadFeature
     }
 }
