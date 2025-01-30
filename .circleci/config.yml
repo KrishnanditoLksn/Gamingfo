@@ -22,6 +22,7 @@ jobs:
             echo "sdk.dir=/usr/local/android-sdk-linux" > local.properties
             echo "api.key=${API_KEY}" >> local.properties
 
+
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
