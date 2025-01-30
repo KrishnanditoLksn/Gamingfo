@@ -41,10 +41,6 @@ class GameFavoriteAdapter : ListAdapter<Game, GameFavoriteAdapter.ViewHolder>(DI
         }
     }
 
-    fun Boolean.toInt(): Int {
-        return if (this) 1 else 0
-    }
-
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Game>() {
             override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
