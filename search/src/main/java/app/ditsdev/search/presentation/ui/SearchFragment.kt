@@ -16,8 +16,6 @@ class SearchFragment : Fragment() {
     private val loadFeature by lazy { loadKoinModules(SearchModule.searchFeatureModule) }
     private lateinit var binding: FragmentSearchBinding
     private val searchViewModel: SearchViewModel by viewModel()
-
-    private fun injectSearchFeatures() = loadFeature
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,15 +39,11 @@ class SearchFragment : Fragment() {
                         }
                     false
                 }
+            rvSearchResultGame.apply {
+                adapter = gameAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+            }
         }
-        binding.rvSearchResultGame.apply {
-            adapter = gameAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        injectSearchFeatures()
+        loadFeature
     }
 }
