@@ -40,7 +40,6 @@
             app:layout_constraintTop_toBottomOf="@+id/ivPublisher" />
 
         <TextView
-            android:id="@+id/tvGamesTittle"
             android:layout_width="95dp"
             android:layout_height="22dp"
             android:fontFamily="@font/dmsans"
