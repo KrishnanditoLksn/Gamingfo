@@ -17,6 +17,8 @@ import app.ditsdev.core.data.source.remote.RemoteGameDataSource
 import app.ditsdev.core.data.source.local.LocalPublisherDataSource
 import app.ditsdev.core.data.source.remote.RemotePublisherDataSource
 import app.ditsdev.core.utils.AppExecutor
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -52,10 +54,14 @@ object CoreModule {
         factory { get<GameDatabase>().gameDao() }
         factory { get<GameDatabase>().publisherDao() }
         single {
+            val passPhrase: ByteArray = SQLiteDatabase.getBytes("ditsdev".toCharArray())
+            val factory = SupportFactory(passPhrase)
             Room.databaseBuilder(
                 androidContext(),
                 GameDatabase::class.java, "Gamingfo.db"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
+                .build()
         }
     }
 
