@@ -10,6 +10,7 @@ android {
     defaultConfig {
         applicationId = "app.ditsdev.gamingfo"
         minSdk = 28
+        //noinspection OldTargetApi
         targetSdk = 34
         //noinspection OldTargetApi
         versionCode = 1

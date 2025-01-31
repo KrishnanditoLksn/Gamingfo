@@ -11,7 +11,17 @@ import app.ditsdev.favorite.databinding.FavoriteItemRowBinding
 import app.ditsdev.gamingfo.ui.detail.DetailGameActivity
 import coil3.load
 
-class GameFavoriteAdapter : ListAdapter<Game, GameFavoriteAdapter.ViewHolder>(DIFF_CALLBACK) {
+class GameFavoriteAdapter : ListAdapter<Game, GameFavoriteAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<Game>() {
+        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+
+        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+    }
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -28,35 +38,21 @@ class GameFavoriteAdapter : ListAdapter<Game, GameFavoriteAdapter.ViewHolder>(DI
     inner class ViewHolder(private var binding: FavoriteItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Game) {
-            binding.ivFavoriteGameImage.load(data.backgroundImage)
-            binding.tvFavGameName.text = data.gameName
-            binding.tvFavoriteRatingGame.text = data.rating
-
-            binding.cliFavItem.setOnClickListener {
-                val context = binding.root.context
-                val intent = Intent(context, DetailGameActivity::class.java)
-                intent.putExtra(EXTRA_DATAS, data)
-                context.startActivity(intent)
+            with(binding) {
+                ivFavoriteGameImage.load(data.backgroundImage)
+                tvFavGameName.text = data.gameName
+                tvFavoriteRatingGame.text = data.rating
+                cliFavItem.setOnClickListener {
+                    val context = binding.root.context
+                    val intent = Intent(context, DetailGameActivity::class.java)
+                    intent.putExtra(EXTRA_DATAS, data)
+                    context.startActivity(intent)
+                }
             }
         }
-    }
-
-    fun Boolean.toInt(): Int {
-        return if (this) 1 else 0
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Game>() {
-            override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
-
-            override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
-
-        }
-
         const val EXTRA_DATAS = "extra_datas"
     }
 }

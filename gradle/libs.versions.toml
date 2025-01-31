@@ -12,14 +12,14 @@ espressoCore = "3.6.1"
 appcompat = "1.7.0"
 lifecycleReactivestreamsKtx = "2.8.7"
 material = "1.12.0"
-activity = "1.8.0"
+activity = "1.10.0"
 ksp="1.9.0-1.0.12"
 constraintlayout = "2.2.0"
-navigationFragmentKtx = "2.8.5"
+navigationFragmentKtx = "2.8.6"
 okhttp = "4.12.0"
-recyclerview = "1.3.2"
+recyclerview = "1.4.0"
 retrofit = "2.11.0"
-roomCompiler = "2.4.3"
+roomCompiler = "2.6.1"
 roomRuntime = "2.6.1"
 rxandroid = "3.0.2"
 rxjava = "3.1.5"
@@ -29,7 +29,6 @@ annotation = "1.9.1"
 [libraries]
 adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "adapterRxjava3" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleReactivestreamsKtx" }
 androidx-lifecycle-reactivestreams-ktx = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "lifecycleReactivestreamsKtx" }
 androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationFragmentKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }

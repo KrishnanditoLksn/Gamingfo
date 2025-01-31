@@ -11,7 +11,17 @@ import app.ditsdev.gamingfo.databinding.ItemGameRowBinding
 import app.ditsdev.gamingfo.ui.detail.DetailGameActivity
 import coil3.load
 
-class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLBACK) {
+class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<Game>() {
+        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+
+        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+            return oldItem.gameId == newItem.gameId
+        }
+    }
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemGameRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -42,17 +52,6 @@ class GameListAdapter : ListAdapter<Game, GameListAdapter.ViewHolder>(DIFF_CALLB
 
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Game>() {
-            override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
-
-            override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
-                return oldItem.gameId == newItem.gameId
-            }
-
-        }
-
         const val EXTRA_DATAS = "extra_datas"
     }
 }
