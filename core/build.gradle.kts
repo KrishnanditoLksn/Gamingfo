@@ -85,4 +85,8 @@ dependencies {
     api(libs.adapter.rxjava3)
     api(libs.androidx.room.rxjava3)
     api(libs.androidx.lifecycle.reactivestreams.ktx)
+
+    //SQL CIPHER
+    implementation(libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite.ktx)
 }

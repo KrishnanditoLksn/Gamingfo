@@ -11,6 +11,8 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 lifecycleReactivestreamsKtx = "2.8.7"
+androidDatabaseSqlcipher = "4.5.4"
+sqliteKtx = "2.4.0"
 material = "1.12.0"
 activity = "1.10.0"
 ksp="1.9.0-1.0.12"
@@ -57,6 +59,8 @@ rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroi
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
+androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqliteKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
