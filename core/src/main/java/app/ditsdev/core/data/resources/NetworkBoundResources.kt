@@ -31,6 +31,8 @@ abstract class NetworkBoundResources<ResultType : Any, RequestType>(private val 
         mCompositeDisposable.add(db)
     }
 
+    private fun onFetchFailed() {}
+
     protected abstract fun loadFromDB(): Flowable<ResultType>
 
     protected abstract fun shouldFetch(data: ResultType?): Boolean
@@ -77,6 +79,7 @@ abstract class NetworkBoundResources<ResultType : Any, RequestType>(private val 
                     }
 
                     is ApiResponseResult.Error -> {
+                        onFetchFailed()
                         result.onNext(ResourceResult.Error(response.errorMessage))
                     }
                 }
