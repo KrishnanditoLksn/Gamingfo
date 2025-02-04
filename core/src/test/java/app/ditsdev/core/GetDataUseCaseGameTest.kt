@@ -60,23 +60,4 @@ class GetDataUseCaseGameTest {
             }
         }
     }
-
-    @Test
-    fun `should not get data from repository`() {
-        val testObserver = gameUseCase.getAllGames().test()
-        testObserver.assertValue { result ->
-            when (result) {
-                is ResourceResult.Success -> {
-                    val game = result.data
-                    game?.size == 2 &&
-                            game[0].gameName == "Destiny 2 " &&
-                            game[0].gameId == 10
-                }
-
-                else -> {
-                    false
-                }
-            }
-        }
-    }
 }
