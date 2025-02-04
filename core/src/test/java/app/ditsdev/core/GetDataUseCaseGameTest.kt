@@ -5,6 +5,7 @@ import app.ditsdev.core.domain.interactor.GameInteractor
 import app.ditsdev.core.domain.model.Game
 import app.ditsdev.core.domain.repository.game.ImplGameRepository
 import app.ditsdev.core.domain.usecase.GameUseCase
+import app.ditsdev.core.utils.DummyData
 import io.reactivex.rxjava3.core.Flowable
 import org.junit.Before
 import org.junit.Test
@@ -26,16 +27,7 @@ class GetDataUseCaseGameTest {
         gameUseCase = GameInteractor(
             gameRepository
         )
-        val dummyGame = listOf(
-            Game(
-                gameId = 1,
-                gameName = "Gta",
-                rating = "3.1",
-                backgroundImage = "a.png",
-                released = "30-01-2024",
-                isFavorite = false
-            )
-        )
+        val dummyGame = DummyData.generateDummyGame()
         val flowableGames: Flowable<ResourceResult<List<Game>>> =
             Flowable.just(ResourceResult.Success(dummyGame))
         `when`(gameRepository.getAllGames()).thenReturn(flowableGames)
