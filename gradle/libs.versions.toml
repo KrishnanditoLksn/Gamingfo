@@ -6,6 +6,8 @@ koinAndroid = "3.3.2"
 koinCoreVersion = "3.3.2"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
+mockitoCore = "5.6.0"
+mockitoInline = "5.2.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -63,6 +65,8 @@ androidx-annotation = { group = "androidx.annotation", name = "annotation", vers
 android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
 androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqliteKtx" }
 squareup-leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroidVersion" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockitoInline" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
