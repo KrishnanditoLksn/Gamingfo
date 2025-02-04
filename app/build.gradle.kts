@@ -46,6 +46,6 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":search"))
-
+    debugImplementation(libs.squareup.leakcanary.android)
     api(libs.androidx.navigation.dynamic.features.fragment)
 }
