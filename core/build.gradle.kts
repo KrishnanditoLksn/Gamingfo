@@ -68,10 +68,16 @@ dependencies {
     api(libs.okhttp)
     api(libs.logging.interceptor)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.junit)
+    api(libs.androidx.junit)
+    api(libs.androidx.espresso.core)
 
+    api(libs.androidx.fragment.testing.manifest)
+
+    api(libs.androidx.fragment.testing)
+
+    api(libs.androidx.runner)
+    api(libs.androidx.rules)
     //ROOM
     api(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
@@ -89,4 +95,8 @@ dependencies {
     //SQL CIPHER
     implementation(libs.android.database.sqlcipher)
     implementation(libs.androidx.sqlite.ktx)
+
+    //mockito
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
 }
