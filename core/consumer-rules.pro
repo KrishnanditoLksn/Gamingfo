@@ -1,3 +1,18 @@
+    ##---------------Begin: proguard configuration for ViewBinding ----------
+    # ViewBinding
+    -keep class * implements androidx.viewbinding.ViewBinding {
+        public static *** bind(android.view.View);
+        public static *** inflate(android.view.LayoutInflater);
+        public static *** inflate(android.view.LayoutInflater, android.view.ViewGroup, boolean);
+    }
+
+    # Keep ViewBinding classes
+    -keep class androidx.viewbinding.** { *; }
+
+    # Keep generated ViewBinding classes
+    -keep class * extends androidx.viewbinding.ViewBinding { *; }
+
+
     ##---------------Begin: proguard configuration for SQLCipher  ----------
     -keep,includedescriptorclasses class net.sqlcipher.** { *; }
     -keep,includedescriptorclasses interface net.sqlcipher.** { *; }
@@ -87,20 +102,3 @@
     # Preserve Koin components
     -keepnames class * extends org.koin.core.component.KoinComponent
     -keepnames class * extends org.koin.core.module.Module
-
-
-    # Coil 3 R8/ProGuard Rules
-    -dontwarn org.xmlpull.v1.**
-    -dontwarn kotlin.Unit
-    -dontwarn kotlin.coroutines.**
-    -dontwarn kotlinx.coroutines.**
-
-    # Preserve Coil core classes
-    -keep class coil3.** { *; }
-    -keepnames class coil3.**
-
-    # Keep Coil annotation processors
-    -keep @interface coil3.annotation.** { *; }
-
-    # Kotlin coroutines rules
-    -keep class kotlinx.coroutines.** { *; }
