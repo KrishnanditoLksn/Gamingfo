@@ -10,6 +10,7 @@ android {
     defaultConfig {
         applicationId = "app.ditsdev.gamingfo"
         minSdk = 28
+        //noinspection OldTargetApi
         targetSdk = 34
         //noinspection OldTargetApi
         versionCode = 1
@@ -20,6 +21,13 @@ android {
 
     buildTypes {
         release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -45,6 +53,6 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":search"))
-
+    debugImplementation(libs.squareup.leakcanary.android)
     api(libs.androidx.navigation.dynamic.features.fragment)
 }

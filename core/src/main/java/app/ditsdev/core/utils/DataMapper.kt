@@ -1,11 +1,11 @@
 package app.ditsdev.core.utils
 
-import app.ditsdev.core.domain.model.Game
-import app.ditsdev.core.domain.model.Publisher
 import app.ditsdev.core.data.source.local.entity.GameEntity
 import app.ditsdev.core.data.source.local.entity.PublisherEntity
 import app.ditsdev.core.data.source.remote.network.responses.GamesItemResponse
 import app.ditsdev.core.data.source.remote.network.responses.ResultsItem
+import app.ditsdev.core.domain.model.Game
+import app.ditsdev.core.domain.model.Publisher
 
 object DataMapper {
     /*
@@ -82,12 +82,4 @@ object DataMapper {
         released = gameDomain.released,
         isFavorite = gameDomain.isFavorite
     )
-
 }
-
-fun mapPublisherDomainToEntities(publisherDomain: Publisher) = PublisherEntity(
-    idPublisher = publisherDomain.idPublisher,
-    name = publisherDomain.name,
-    imageBackground = publisherDomain.imageBackground,
-    gamesCount = publisherDomain.gamesCount
-)

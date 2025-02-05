@@ -30,7 +30,7 @@ class PublisherListAdapter :
         fun bind(data: Publisher) {
             binding.ivPublisher.load(data.imageBackground)
             binding.tvPublisherName.text = data.name
-            binding.tvGamesCount.text = data.gamesCount.toString()
+            binding.tvGamesCount.text =String.format(data.gamesCount.toString())
         }
     }
 

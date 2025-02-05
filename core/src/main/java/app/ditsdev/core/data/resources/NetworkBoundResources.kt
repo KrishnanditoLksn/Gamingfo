@@ -42,49 +42,62 @@ abstract class NetworkBoundResources<ResultType : Any, RequestType>(private val 
     protected abstract fun saveCallResult(data: RequestType)
 
     private fun fetchFromNetwork() {
-        val apiResponse = createCall()
-
         result.onNext(ResourceResult.Loading(null))
-
-        val response = apiResponse
+        val responseDisposable = createCall()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .take(1)
-            .doOnComplete {
-                mCompositeDisposable.dispose()
-            }
-            .subscribe { response ->
+            .subscribe({ response ->
                 when (response) {
                     is ApiResponseResult.Success -> {
                         saveCallResult(response.data)
-                        val dbSource = loadFromDB()
-                        val subscribe = dbSource.subscribeOn(Schedulers.computation())
+                        val dbDisposable = loadFromDB()
+                            .subscribeOn(Schedulers.computation())
                             .observeOn(AndroidSchedulers.mainThread())
                             .take(1)
-                            .subscribe {
-                                result.onNext(ResourceResult.Success(it))
-                            }
-                        subscribe.dispose()
+                            .subscribe({ data ->
+                                result.onNext(ResourceResult.Success(data))
+                            }, { error ->
+                                result.onNext(
+                                    ResourceResult.Error(
+                                        error.message
+                                            ?: "Terjadi kesalahan saat mengambil data dari database",
+                                        null
+                                    )
+                                )
+                            })
+                        mCompositeDisposable.add(dbDisposable)
                     }
 
                     is ApiResponseResult.Empty -> {
-                        val dbSource = loadFromDB()
-                        val subscribe = dbSource.subscribeOn(Schedulers.computation())
+                        val dbDisposable = loadFromDB()
+                            .subscribeOn(Schedulers.computation())
                             .observeOn(AndroidSchedulers.mainThread())
                             .take(1)
-                            .subscribe {
-                                result.onNext(ResourceResult.Success(it))
-                            }
-                        subscribe.dispose()
+                            .subscribe({ data ->
+                                result.onNext(ResourceResult.Success(data))
+                            }, { error ->
+                                result.onNext(
+                                    ResourceResult.Error(
+                                        error.message
+                                            ?: "Terjadi kesalahan saat mengambil data dari database",
+                                        null
+                                    )
+                                )
+                            })
+
+                        mCompositeDisposable.add(dbDisposable)
                     }
 
                     is ApiResponseResult.Error -> {
                         onFetchFailed()
-                        result.onNext(ResourceResult.Error(response.errorMessage))
+                        result.onNext(ResourceResult.Error(response.errorMessage, null))
                     }
                 }
-            }
-        mCompositeDisposable.add(response)
+            }, { error ->
+                result.onNext(ResourceResult.Error(error.message ?: "Terjadi kesalahan", null))
+            })
+        mCompositeDisposable.add(responseDisposable)
     }
 
     fun asFlowable(): Flowable<ResourceResult<ResultType>> {

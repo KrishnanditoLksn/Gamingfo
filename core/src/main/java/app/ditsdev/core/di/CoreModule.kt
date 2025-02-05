@@ -17,6 +17,9 @@ import app.ditsdev.core.data.source.remote.RemoteGameDataSource
 import app.ditsdev.core.data.source.local.LocalPublisherDataSource
 import app.ditsdev.core.data.source.remote.RemotePublisherDataSource
 import app.ditsdev.core.utils.AppExecutor
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -30,10 +33,17 @@ object CoreModule {
 
     val networkModule = module {
         single {
+            val hostname = "api.rawg.io"
+            val certificatePinner = CertificatePinner.Builder()
+                .add(hostname, "sha256/eerOFGv587fGOb2Cx6CD4S+MfehEojzU5nwhF4xx4/0=")
+                .add(hostname, "sha256/kIdp6NNEd8wsugYyyIYFsi1ylMCED3hZbSR8ZFsa/A4=")
+                .add(hostname, "sha256/mEflZT5enoR1FuXLgYYGqnVEoZvmf9c2bVBpiOjYQ0c=")
+                .build()
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
                 .build()
         }
 
@@ -52,10 +62,14 @@ object CoreModule {
         factory { get<GameDatabase>().gameDao() }
         factory { get<GameDatabase>().publisherDao() }
         single {
+            val passPhrase: ByteArray = SQLiteDatabase.getBytes("ditsdev".toCharArray())
+            val factory = SupportFactory(passPhrase)
             Room.databaseBuilder(
                 androidContext(),
                 GameDatabase::class.java, "Gamingfo.db"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
+                .build()
         }
     }
 

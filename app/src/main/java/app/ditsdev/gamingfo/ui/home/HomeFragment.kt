@@ -26,58 +26,60 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.gameProgressBar.visibility = View.INVISIBLE
-        val gameAdapter = GameListAdapter()
-        homeViewModel.getAllGames().observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is ResourceResult.Success -> {
-                    binding.gameProgressBar.visibility = View.INVISIBLE
-                    gameAdapter.submitList(result.data)
-                }
-
-                is ResourceResult.Loading -> {
-                    binding.gameProgressBar.visibility = View.VISIBLE
-                }
-
-                is ResourceResult.Error -> {
-                    binding.gameProgressBar.visibility = View.INVISIBLE
-                }
-            }
-            binding.rvHeadlines.apply {
-                adapter = gameAdapter
-                setHasFixedSize(true)
-                layoutManager = GridLayoutManager(requireContext(), 1)
-                    .apply {
-                        orientation = GridLayoutManager.HORIZONTAL
+        with(binding) {
+            gameProgressBar.visibility = View.INVISIBLE
+            val gameAdapter = GameListAdapter()
+            homeViewModel.getAllGames().observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is ResourceResult.Success -> {
+                        gameProgressBar.visibility = View.INVISIBLE
+                        gameAdapter.submitList(result.data)
                     }
-            }
-        }
 
-        binding.publishersProgressBar.visibility = View.INVISIBLE
-        val publisherAdapter = PublisherListAdapter()
-        homeViewModel.getAllPublishers().observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is ResourceResult.Success -> {
-                    binding.publishersProgressBar.visibility = View.INVISIBLE
-                    publisherAdapter.submitList(result.data)
-                }
-
-                is ResourceResult.Error -> {
-                    binding.publishersProgressBar.visibility = View.INVISIBLE
-                }
-
-                is ResourceResult.Loading -> {
-                    binding.publishersProgressBar.visibility = View.VISIBLE
-                }
-            }
-
-            binding.rvPublishers.apply {
-                adapter = publisherAdapter
-                setHasFixedSize(true)
-                layoutManager = GridLayoutManager(requireContext(), 1)
-                    .apply {
-                        orientation = GridLayoutManager.HORIZONTAL
+                    is ResourceResult.Loading -> {
+                        gameProgressBar.visibility = View.VISIBLE
                     }
+
+                    is ResourceResult.Error -> {
+                        gameProgressBar.visibility = View.INVISIBLE
+                    }
+                }
+                rvHeadlines.apply {
+                    adapter = gameAdapter
+                    setHasFixedSize(true)
+                    layoutManager = GridLayoutManager(requireContext(), 1)
+                        .apply {
+                            orientation = GridLayoutManager.HORIZONTAL
+                        }
+                }
+            }
+
+            publishersProgressBar.visibility = View.INVISIBLE
+            val publisherAdapter = PublisherListAdapter()
+            homeViewModel.getAllPublishers().observe(viewLifecycleOwner) { result ->
+                when (result) {
+                    is ResourceResult.Success -> {
+                        publishersProgressBar.visibility = View.INVISIBLE
+                        publisherAdapter.submitList(result.data)
+                    }
+
+                    is ResourceResult.Error -> {
+                        publishersProgressBar.visibility = View.INVISIBLE
+                    }
+
+                    is ResourceResult.Loading -> {
+                        publishersProgressBar.visibility = View.VISIBLE
+                    }
+                }
+
+                rvPublishers.apply {
+                    adapter = publisherAdapter
+                    setHasFixedSize(true)
+                    layoutManager = GridLayoutManager(requireContext(), 1)
+                        .apply {
+                            orientation = GridLayoutManager.HORIZONTAL
+                        }
+                }
             }
         }
     }
