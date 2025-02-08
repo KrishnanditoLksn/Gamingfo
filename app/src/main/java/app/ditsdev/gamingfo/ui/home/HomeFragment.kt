@@ -89,11 +89,6 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    override fun onStop() {
-        super.onStop()
-        _binding = null
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
